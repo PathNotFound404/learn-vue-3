@@ -1,4 +1,6 @@
 <template>
+  <!-- The most basic for of data binding is text interpolation using mustache notation-->
+   <!--{{message}} refers to the message we defined in data-->
   <h1>Message: {{ message }}</h1>
   <hr>
   <h1>Number: {{number}}</h1>
