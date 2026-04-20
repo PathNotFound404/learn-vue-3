@@ -6,6 +6,7 @@ import About from '@/views/About.vue'
 import BlogPost from '@/views/BlogPost.vue'
 import BlogPostGreeting from '@/views/BlogPostGreeting.vue'
 import NotFound from '@/views/NotFound.vue'
+import Ads from '@/views/Ads.vue'
 
 const router = createRouter({
     // Provide the history implementation to use. We are using HTML5 history mode here.
@@ -16,7 +17,10 @@ const router = createRouter({
         {path: '/blogPosts', name: 'blogPosts', component: BlogPosts, redirect: {name: 'blogPostGreeting'},
             children: [
                 {path: '', name: 'blogPostGreeting', component: BlogPostGreeting}, // Default child route to show all blog posts
-                {path: '/blogPosts/:id(\\d+)', name: 'blogPost', component: BlogPost}
+                {path: '/blogPosts/:id(\\d+)', name: 'blogPost', components:{
+                    default: BlogPost, // Keep the BlogPosts component in the main view
+                    sidebar: Ads,
+                }}
             ]
         },
         {path: '/about', name: 'about', component: About}
